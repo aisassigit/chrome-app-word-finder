@@ -1,0 +1,14 @@
+<div data-ng-controller="MainController">
+
+    <div>
+        <input type="text" class="form-control" placeholder="Enter word and press enter..." name="word" data-ng-model="word" data-ng-enter="addWord(word)">
+    </div>
+
+    <div>
+            <div class="well well-sm" data-ng-repeat="word in words track by $index">
+                {{word}}
+                <span class="glyphicon glyphicon-minus-sign pull-right" data-ng-click="removeWord($index)"></span>
+            </div>
+    </div>
+
+</div>
