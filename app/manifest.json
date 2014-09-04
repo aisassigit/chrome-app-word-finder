@@ -42,7 +42,7 @@
       ],
       "js": [
         "scripts/contentscript.js",
-        "scripts/hilitor.js"
+        "bower_components/hilitor/hilitor.js"
       ],
       "run_at": "document_end",
       "all_frames": false
