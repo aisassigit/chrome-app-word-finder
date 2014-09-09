@@ -11,10 +11,16 @@
     <!-- endbuild -->
     <base target="_blank">
 </head>
-<body data-ng-controller="GlobalController">
+<body data-ng-controller="GlobalController" style="background-color:#E0E0E0">
 
 <div class="container">
-    <div class="page-header">Word Finder <img src="images/word-finder-19.png" class="pull-right"></div>
+    <div class="page-header">Word Finder
+        <img src="images/word-finder-19.png" class="pull-right">
+        <div class="small">
+            <span class="glyphicon glyphicon-chevron-left pull-left"></span>
+            Find multiple words in this page
+        </div>
+    </div>
 </div>
 
 <section class="container" data-ng-view>
