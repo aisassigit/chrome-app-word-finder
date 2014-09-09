@@ -15,6 +15,9 @@ appControllers.controller('MainController',['$scope','$routeParams','GlobalServi
   $scope.words = [];
 
   $scope.addWord = function(word){
+    if(word === ''){
+      return;
+    }
     $scope.words.push(word);
     $scope.highlightWords();
     $scope.word = '';
