@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Word Finder App</title>
 
-    <!-- build:css(.tmp) styles/application.css -->
+    <!-- build:css(.tmp,app) styles/libs/application.css -->
     <link rel="stylesheet" media="all" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <!-- endbuild -->
     <base target="_blank">
@@ -21,11 +21,10 @@
 
 </section>
 
-
-<!-- build:js scripts/vendor.js -->
-<script src="/bower_components/angular/angular.js"></script>
-<script src="/bower_components/angular-route/angular-route.js"></script>
-<script src="/bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<!-- build:js({.tmp,app/}) scripts/libs/vendor.js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
@@ -35,5 +34,6 @@
 <script src="scripts/controllers/globalController.js"></script>
 <script src="scripts/controllers/MainController.js"></script>
 <!-- endbuild -->
+
 </body>
 </html>

@@ -15,6 +15,8 @@ module.exports = function (grunt) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
     // Configurable paths
     var config = {
         app: 'app',
@@ -126,15 +128,6 @@ module.exports = function (grunt) {
             }
         },
 
-        // Automatically inject Bower components into the HTML file
-        bowerInstall: {
-            app: {
-                src: [
-                    '<%= config.app %>/*.html'
-                ]
-            }
-        },
-
         // Reads HTML for usemin blocks to enable smart builds that automatically
         // concat, minify and revision files. Creates configurations in memory so
         // additional tasks can operate on them
@@ -143,6 +136,7 @@ module.exports = function (grunt) {
                 dest: '<%= config.dist %>'
             },
             html: [
+                '<%= config.app %>/{,*/}*.html',
                 '<%= config.app %>/popup.html',
                 '<%= config.app %>/options.html'
             ]
@@ -151,7 +145,10 @@ module.exports = function (grunt) {
         // Performs rewrites based on rev and the useminPrepare configuration
         usemin: {
             options: {
-                assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
+                assetsDirs: [
+                  '<%= config.dist %>',
+                  '<%= config.dist %>/images'
+                ]
             },
             html: ['<%= config.dist %>/{,*/}*.html'],
             css: ['<%= config.dist %>/styles/{,*/}*.css']
@@ -180,6 +177,18 @@ module.exports = function (grunt) {
             }
         },
 
+      cssmin: {
+        my_target: {
+          files: {
+            '<%= config.dist%>/styles/libs/application.css': ['<%=config.app%>/bower_components/bootstrap/dist/css/bootstrap.css']
+          }
+        }
+      },
+
+      uglify: {
+        options:{mangle:false}
+      },
+
         htmlmin: {
             dist: {
                 options: {
@@ -195,7 +204,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= config.app %>',
-                    src: '*.html',
+                    src: ['*.html', 'views/{,*/}*.html'],
                     dest: '<%= config.dist %>'
                 }]
             }
@@ -218,7 +227,18 @@ module.exports = function (grunt) {
                         '_locales/{,*/}*.json',
                     ]
                 }]
-            }
+            },
+          glyphs: {
+            files: [{
+              expand:true,
+              flatten: true,
+              filter:'isFile',
+              dest: '<%= config.dist %>/styles/fonts',
+              src: [
+                '<%=config.app%>/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg'
+              ]
+            }]
+          }
         },
 
         // Run some tasks in parallel to speed up build process
@@ -292,6 +312,7 @@ module.exports = function (grunt) {
         'concat',
         'uglify',
         'copy',
+        'copy:glyphs',
         'usemin',
         'compress'
     ]);
