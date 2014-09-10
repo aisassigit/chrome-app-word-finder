@@ -37,6 +37,7 @@ appControllers.controller('MainController',['$scope','$routeParams','GlobalServi
   $scope.removeAll = function(){
     $scope.words.length = 0;
     $scope.words = [];
+    $scope.highlightWords();
   };
 
   $scope.highlightWords = function(){
