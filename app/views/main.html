@@ -5,6 +5,10 @@
     </div>
         <div class="well well-sm" style="margin:0px" data-ng-repeat="word in words track by $index">
             {{word}}
-            <span class="glyphicon glyphicon-minus-sign pull-right" style="color:red" data-ng-click="removeWord($index)"></span>
+            <span class="glyphicon glyphicon-remove-circle pull-right" style="color:red" data-ng-click="removeWord($index)"></span>
+        </div>
+        <div class="well well-sm" data-ng-show="isLongList()">
+            <span class="small"> Remove all...{{isLongList()}}</span>
+            <span class="glyphicon glyphicon-trash pull-right" style="color:red" data-ng-click="removeAll()"></span>
         </div>
 </div>

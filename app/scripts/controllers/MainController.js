@@ -9,8 +9,6 @@ appControllers.controller('MainController',['$scope','$routeParams','GlobalServi
   }
 
   $scope.sel = $routeParams.sel;
-
-
   $scope.word = '';
   $scope.words = [];
 
@@ -28,6 +26,18 @@ appControllers.controller('MainController',['$scope','$routeParams','GlobalServi
     $scope.highlightWords();
   };
 
+  $scope.isLongList = function(){
+    if($scope.words.length >= 4){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
+  $scope.removeAll = function(){
+    $scope.words.length = 0;
+    $scope.words = [];
+  };
 
   $scope.highlightWords = function(){
     if (chrome.runtime) {

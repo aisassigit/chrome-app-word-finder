@@ -180,7 +180,11 @@ module.exports = function (grunt) {
       cssmin: {
         my_target: {
           files: {
-            '<%= config.dist%>/styles/libs/application.css': ['<%=config.app%>/bower_components/bootstrap/dist/css/bootstrap.css']
+            '<%= config.dist%>/styles/libs/application.css': [
+              '<%=config.app%>/bower_components/bootstrap/dist/css/bootstrap.css',
+              '<%=config.app%>/bower_components/angular/angular-csp.css'
+
+            ]
           }
         }
       },
